@@ -22,12 +22,10 @@ class Test_Cart():
         self.cp=CartPage(self.driver)
         self.cp.clickBikeLightPd()
         self.cp.clickCartAddBackLight()
-        self.cp.clickButBack()
-        self.cp.clickBoltTshirtPd()
-        self.cp.clickCartAddBoltTshirt()
+
 
         self.targetpage = self.cp.clickCartAddValue()
-        if self.targetpage == True:
+        if self.targetpage == '1':
             assert True
             self.driver.close()
         else:

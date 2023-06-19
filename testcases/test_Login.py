@@ -20,7 +20,7 @@ class Test_Login():
         self.lp.clickLogin()
 
         self.targetpage = self.lp.productPageExists()
-        if self.targetpage == True:
+        if self.targetpage == "Products":
             assert True
             self.driver.close()
         else:
@@ -40,7 +40,7 @@ class Test_Login():
         self.lp.clickLogin()
 
         self.targetpage = self.lp.productPageExists()
-        if self.targetpage == True:
+        if self.targetpage == "Products":
             assert True
             self.driver.close()
         else:
@@ -60,7 +60,7 @@ class Test_Login():
         self.lp.clickLogin()
 
         self.targetpage = self.lp.productPageExists()
-        if self.targetpage == True:
+        if self.targetpage == "Products":
             assert True
             self.driver.close()
         else:
@@ -80,7 +80,7 @@ class Test_Login():
         self.lp.clickLogin()
 
         self.targetpage = self.lp.productPageExists()
-        if self.targetpage == True:
+        if self.targetpage == "Products":
             assert True
             self.driver.close()
         else:
@@ -100,7 +100,7 @@ class Test_Login():
         self.lp.clickLogin()
 
         self.targetpage = self.lp.productPageExists()
-        if self.targetpage == True:
+        if self.targetpage == "Products":
             assert True
             self.driver.close()
         else:

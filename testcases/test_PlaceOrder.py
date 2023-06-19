@@ -38,7 +38,7 @@ class OrderedProductPrice():
         self.co.clickContinueBt()
         self.co.clickFinishBt()
         self.Target_value=self.co.confmsgOrdersucc()
-        if self.Target_value==True:
+        if self.Target_value=="Thank you for your order!":
             assert True
             self.driver.close()
         else:

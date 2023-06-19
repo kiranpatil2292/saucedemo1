@@ -13,12 +13,14 @@ class Test_CheckOut():
     def test001_checkout_with_valid_Credential(self, setup):
         self.logger.info("******* Starting test_001_checkout with_valid_Credential **********")
         self.driver = setup
+        self.driver.implicitly_wait(2)
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
         self.lp = LoginPage(self.driver)
         self.lp.setUsername("standard_user")
         self.lp.setPassword("secret_sauce")
+
         self.lp.clickLogin()
         self.cp=CartPage(self.driver)
         self.cp.clickBikeLightPd()
@@ -26,6 +28,8 @@ class Test_CheckOut():
         self.cp.clickButBack()
         self.cp.clickBoltTshirtPd()
         self.cp.clickCartAddBoltTshirt()
+        self.cp.clickCartLink()
+        self.cp.clickCheckOut()
         self.co=CheckOutPage(self.driver)
         self.co.setFirstName('kiran')
         self.co.setLastName('patil')
@@ -33,7 +37,7 @@ class Test_CheckOut():
         self.co.clickContinueBt()
 
         self.targetpage = self.co.ConfmsgCheckOverView()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Overview":
             assert True
             self.driver.close()
         else:
@@ -44,6 +48,8 @@ class Test_CheckOut():
     def test002_checkout_with_Invalid_Credential(self, setup):
         self.logger.info("******* Starting test_001_checkout with_Invalid_Credential **********")
         self.driver = setup
+        self.driver.implicitly_wait(4)
+
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
@@ -57,6 +63,8 @@ class Test_CheckOut():
         self.cp.clickButBack()
         self.cp.clickBoltTshirtPd()
         self.cp.clickCartAddBoltTshirt()
+        self.cp.clickCartLink()
+        self.cp.clickCheckOut()
         self.co=CheckOutPage(self.driver)
         self.co.setFirstName('kiran')
         self.co.setLastName('')
@@ -64,7 +72,7 @@ class Test_CheckOut():
         self.co.clickContinueBt()
 
         self.targetpage = self.co.ConfmsgCheckOverView()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Overview":
             assert True
             self.driver.close()
         else:
@@ -76,6 +84,7 @@ class Test_CheckOut():
     def test003_checkout_with_Invalid_Credential(self, setup):
         self.logger.info("******* Starting test_001_checkout with_valid_Credential **********")
         self.driver = setup
+        self.driver.implicitly_wait(4)
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
@@ -89,6 +98,8 @@ class Test_CheckOut():
         self.cp.clickButBack()
         self.cp.clickBoltTshirtPd()
         self.cp.clickCartAddBoltTshirt()
+        self.cp.clickCartLink()
+        self.cp.clickCheckOut()
         self.co=CheckOutPage(self.driver)
         self.co.setFirstName('kiran')
         self.co.setLastName('patil')
@@ -96,7 +107,7 @@ class Test_CheckOut():
         self.co.clickContinueBt()
 
         self.targetpage = self.co.ConfmsgCheckOverView()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Overview":
             assert True
             self.driver.close()
         else:
@@ -110,6 +121,7 @@ class Test_CheckOut():
     def test004_checkout_with_Invalid_Credential(self, setup):
         self.logger.info("******* Starting test_001_checkout with_Invalid_Credential **********")
         self.driver = setup
+        self.driver.implicitly_wait(4)
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
@@ -123,6 +135,8 @@ class Test_CheckOut():
         self.cp.clickButBack()
         self.cp.clickBoltTshirtPd()
         self.cp.clickCartAddBoltTshirt()
+        self.cp.clickCartLink()
+        self.cp.clickCheckOut()
         self.co=CheckOutPage(self.driver)
         self.co.setFirstName('')
         self.co.setLastName('')
@@ -130,7 +144,7 @@ class Test_CheckOut():
         self.co.clickContinueBt()
 
         self.targetpage = self.co.ConfmsgCheckOverView()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Overview":
             assert True
         else:
             self.driver.save_screenshot(
@@ -141,6 +155,7 @@ class Test_CheckOut():
     def test005_checkout_with_Invalid_Credential(self, setup):
         self.logger.info("******* Starting test_001_checkout with_valid_Credential **********")
         self.driver = setup
+        self.driver.implicitly_wait(4)
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
@@ -154,6 +169,8 @@ class Test_CheckOut():
         self.cp.clickButBack()
         self.cp.clickBoltTshirtPd()
         self.cp.clickCartAddBoltTshirt()
+        self.cp.clickCartLink()
+        self.cp.clickCheckOut()
         self.co=CheckOutPage(self.driver)
         self.co.setFirstName('')
         self.co.setLastName('patil')
@@ -161,7 +178,7 @@ class Test_CheckOut():
         self.co.clickContinueBt()
 
         self.targetpage = self.co.ConfmsgCheckOverView()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Overview":
             assert True
             self.driver.close()
         else:

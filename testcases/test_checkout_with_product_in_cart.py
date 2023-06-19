@@ -30,10 +30,11 @@ class Test_Cart():
         self.cp.clickContShop()
         self.cp.clickSacLabPd()
         self.cp.clickAddCartSacLabPd()
+        self.cp.clickCartLink()
         self.cp.clickCheckOut()
 
         self.targetpage = self.cp.conFroMsgCheckout()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Your Information":
             assert True
             self.driver.close()
         else:

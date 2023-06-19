@@ -32,7 +32,7 @@ class Test_Cart():
         self.cp.clickAddCartSacLabPd()
 
         self.targetpage = self.cp.clickCartAddValue()
-        if self.targetpage == True:
+        if self.targetpage == '2':
             assert True
             self.driver.close()
         else:

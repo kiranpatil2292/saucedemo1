@@ -11,7 +11,7 @@ class CheckOutPage():
     but_cancel_xpath = "//button[@id='cancel']"
     confmsg_ordersucc_xpath = "//h2[@class='complete-header']"
     confmsg_price_xpath = "//div[@class='summary_info_label summary_total_label']"
-    click_Back_to_Home_Xpath="//button[@id='back-to-products']"
+    click_Back_to_Home_Xpath = "//button[@id='back-to-products']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -35,7 +35,7 @@ class CheckOutPage():
         self.driver.find_element(By.XPATH, self.but_Finish_xpath).click()
 
     def click_Bt_Back_TO_HOme(self):
-        self.driver.find_element(By.XPATH,self. click_Back_to_Home_Xpath)
+        self.driver.find_element(By.XPATH, self.click_Back_to_Home_Xpath)
 
     def ConfmsgCheckOverView(self):
         try:

@@ -6,6 +6,7 @@ class LoginPage():
     txt_password_xpath = "//input[@id='password']"
     btn_login_xpath = "//input[@id='login-button']"
     msg_productpage_xpath = "//span[@class='title']"
+    burger_menu_bt_xpath="//button[@id='react-burger-menu-btn']"
     but_logout_xpath="//a[@id='logout_sidebar_link']"
     confmsg_login_xpath="//div[@class='login_logo']"
 
@@ -21,8 +22,11 @@ class LoginPage():
     def clickLogin(self):
         self.driver.find_element(By.XPATH,self.btn_login_xpath).click()
 
+    def clickBurgerMenuBt(self):
+        self.driver.find_element(By.XPATH,self.burger_menu_bt_xpath).click()
+
     def clickLogout(self):
-        self.driver.find_element(By.XPATH,self.but_logout_xpath)
+        self.driver.find_element(By.XPATH,self.but_logout_xpath).click()
 
     def productPageExists(self):
         try:

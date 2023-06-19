@@ -38,7 +38,7 @@ class OrderedProductPrice():
         self.co.clickContinueBt()
         self.co.clickCancelBt()
         self.Target_value=self.lp.productPageExists()
-        if self.Target_value==True:
+        if self.Target_value=="Products":
             assert True
             self.driver.close()
         else:

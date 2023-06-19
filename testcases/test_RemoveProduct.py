@@ -29,7 +29,7 @@ class Test_Cart():
         self.cp.clickRemovePd()
 
         self.targetpage = self.cp.clickCartAddValue()
-        if self.targetpage == True:
+        if self.targetpage == "1":
             assert True
             self.driver.close()
         else:

@@ -9,7 +9,7 @@ class Test_CheckOut():
     baseURL = " https://www.saucedemo.com/"
     logger = LogGen.loggen()
 
-    def test001_Checkout_With_No_product_to_cart(self, setup):
+    def test_Checkout_WithNoProductToCart(self, setup):
         self.logger.info("******* Starting test_001_Checkout_With_valid_credential **********")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -24,7 +24,7 @@ class Test_CheckOut():
         self.cp.clickCheckOut()
 
         self.targetpage = self.cp.conFroMsgCheckout()
-        if self.targetpage == True:
+        if self.targetpage == "Checkout: Your Information":
             assert True
             self.driver.close()
         else:
