@@ -3,10 +3,13 @@ import os
 from pageObjects.CartPage import CartPage
 from pageObjects.LoginPage import LoginPage
 from utilities.customLogger import LogGen
+from utilities.readProperties import ReadConfig
 
 
 class Test_Cart():
-    baseURL = " https://www.saucedemo.com/"
+    baseURL = ReadConfig.getApplicationURL()
+    username = ReadConfig.getUserName()
+    password = ReadConfig.getPassword()
     logger = LogGen.loggen()
 
     def test001_AddToCart(self, setup):
@@ -16,19 +19,18 @@ class Test_Cart():
         self.driver.maximize_window()
 
         self.lp = LoginPage(self.driver)
-        self.lp.setUsername("standard_user")
-        self.lp.setPassword("secret_sauce")
+        self.lp.setUsername(self.username)
+        self.lp.setPassword(self.password)
         self.lp.clickLogin()
-        self.cp=CartPage(self.driver)
+        self.cp = CartPage(self.driver)
         self.cp.clickBikeLightPd()
         self.cp.clickCartAddBackLight()
 
-
-        self.targetpage = self.cp.clickCartAddValue()
-        if self.targetpage == '1':
+        self.targetPage = self.cp.clickCartAddValue()
+        if self.targetPage == '1':
             assert True
             self.driver.close()
         else:
-            self.driver.save_screenshot(os.path.abspath(os.curdir)+"\\screenshots\\"+"test001_addcart")
+            self.driver.save_screenshot(os.path.abspath(os.curdir) + "\\screenshots\\" + "test001_addcart")
             self.driver.close()
             assert False

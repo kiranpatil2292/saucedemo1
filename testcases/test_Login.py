@@ -2,10 +2,13 @@ import os
 
 from pageObjects.LoginPage import LoginPage
 from utilities.customLogger import LogGen
+from utilities.readProperties import ReadConfig
 
 
 class Test_Login():
-    baseURL = " https://www.saucedemo.com/"
+    baseURL = ReadConfig.getApplicationURL()
+    username = ReadConfig.getUserName()
+    password = ReadConfig.getPassword()
     logger = LogGen.loggen()
 
     def test001_Login(self, setup):
@@ -15,12 +18,13 @@ class Test_Login():
         self.driver.maximize_window()
 
         self.lp = LoginPage(self.driver)
-        self.lp.setUsername("standard_user")
-        self.lp.setPassword("secret_sauce")
+        self.lp.setUsername(self.username)
+        self.lp.setPassword(self.password)
+        self.driver.refresh()
         self.lp.clickLogin()
 
-        self.targetpage = self.lp.productPageExists()
-        if self.targetpage == "Products":
+        self.targetPage = self.lp.productPageExists()
+        if self.targetPage == "Products":
             assert True
             self.driver.close()
         else:
@@ -98,6 +102,7 @@ class Test_Login():
         self.lp.setUsername("")
         self.lp.setPassword("")
         self.lp.clickLogin()
+        self.driver.refresh()
 
         self.targetpage = self.lp.productPageExists()
         if self.targetpage == "Products":
@@ -107,10 +112,3 @@ class Test_Login():
             self.driver.save_screenshot(os.path.abspath(os.curdir) + "\\screenshots\\" + "test_login005")
             self.driver.close()
             assert False
-
-
-
-
-
-
-

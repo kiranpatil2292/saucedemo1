@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 
 class CartPage():
@@ -15,6 +16,7 @@ class CartPage():
     cartadd_saclabone_xpath = "//button[@id='add-to-cart-sauce-labs-onesie']"
     but_checkout_xpath = "//button[@id='checkout']"
     confmsg_checkout_xpath = "//span[@class='title']"
+    drp_pd_sort_container = "//select[@class='product_sort_container']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -51,6 +53,10 @@ class CartPage():
 
     def clickCheckOut(self):
         self.driver.find_element(By.XPATH, self.but_checkout_xpath).click()
+
+    def seleDropOpt(self):
+        Product_sort = Select(self.driver.find_element(By.XPATH, self.drp_pd_sort_container))
+        Product_sort.select_by_visible_text("Price (low to high)")
 
     def clickCartAddValue(self):
         try:

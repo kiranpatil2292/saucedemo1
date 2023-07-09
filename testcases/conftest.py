@@ -1,18 +1,37 @@
 import os
 from datetime import datetime
 import pytest
+
 from selenium import webdriver
 
 
 @pytest.fixture()
-def setup():
-    driver = webdriver.Chrome()
-    print("Launching chrome browser.........")
+def setup(browser):
+    if browser == 'chrome':
+        driver = webdriver.Chrome()
+        print("Launching Chrome Browser")
+    elif browser == 'firefox':
+        driver = webdriver.Firefox()
+        print("Launching Firefox Browser")
+    elif browser == 'edge':
+        driver = webdriver.Edge()
+        print("Launching Edge Browser")
+    else:
+        print("Headless mode")
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("headless")
+        driver = webdriver.Chrome(options=chrome_options)
+
     return driver
 
 
 def pytest_addoption(parser):  # This will get the value from CLI /hooks
     parser.addoption("--browser")
+
+
+@pytest.fixture()
+def browser(request):
+    return request.config.getoption("--browser")
 
 
 # It is hook for Adding Environment info to HTML Report

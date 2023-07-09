@@ -12,6 +12,7 @@ class CheckOutPage():
     confmsg_ordersucc_xpath = "//h2[@class='complete-header']"
     confmsg_price_xpath = "//div[@class='summary_info_label summary_total_label']"
     click_Back_to_Home_Xpath = "//button[@id='back-to-products']"
+    Scroll_ele_Total_Price_xpath="//div[@class='summary_info_label summary_total_label']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -35,7 +36,12 @@ class CheckOutPage():
         self.driver.find_element(By.XPATH, self.but_Finish_xpath).click()
 
     def click_Bt_Back_TO_HOme(self):
-        self.driver.find_element(By.XPATH, self.click_Back_to_Home_Xpath)
+        self.driver.find_element(By.XPATH, self.click_Back_to_Home_Xpath).click( )
+
+    def scroll_action_price_ele(self):
+        scroll_ele= self.driver.find_element(By.XPATH,self.Scroll_ele_Total_Price_xpath)
+        self.driver.execute_script("arguments[0].scrollIntoView();", scroll_ele)
+
 
     def ConfmsgCheckOverView(self):
         try:
