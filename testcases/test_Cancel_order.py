@@ -6,7 +6,7 @@ from pageObjects.LoginPage import LoginPage
 from pageObjects.CartPage import CartPage
 
 
-class OrderedProductPrice():
+class OrderedProductPrice:
     baseURL = " https://www.saucedemo.com/"
     logger = LogGen.loggen()
 

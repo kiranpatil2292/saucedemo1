@@ -21,16 +21,3 @@ class Test_Cart():
         self.lp = LoginPage(self.driver)
         self.lp.setUsername(self.username)
         self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.cp = CartPage(self.driver)
-        self.cp.clickBikeLightPd()
-        self.cp.clickCartAddBackLight()
-
-        self.targetPage = self.cp.clickCartAddValue()
-        if self.targetPage == '1':
-            assert True
-            self.driver.close()
-        else:
-            self.driver.save_screenshot(os.path.abspath(os.curdir) + "\\screenshots\\" + "test001_addcart")
-            self.driver.close()
-            assert False

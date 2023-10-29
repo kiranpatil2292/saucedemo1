@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 import pytest
 
+
 from selenium import webdriver
 
 
@@ -9,7 +10,8 @@ from selenium import webdriver
 def setup(browser):
     if browser == 'chrome':
         driver = webdriver.Chrome()
-        print("Launching Chrome Browser")
+        print("Launching chrome browser.........")
+
     elif browser == 'firefox':
         driver = webdriver.Firefox()
         print("Launching Firefox Browser")

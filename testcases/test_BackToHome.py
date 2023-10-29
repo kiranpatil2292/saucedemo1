@@ -48,11 +48,11 @@ class Test_Back_ToHomePageFromProductPage():
         self.logger.info("**** entered input to the checkoutPage  ****")
         self.co.clickContinueBt()
         self.co.clickFinishBt()
-        self.logger.info("clicking on the Finish Button ******")
+        self.logger.info("*****clicking on the Finish Button ******")
         time.sleep(4)
         self.co.click_Bt_Back_TO_HOme()
         self.targetPage = self.lp.productPageExists()
-        self.logger.info("**** returning to the product page")
+        self.logger.info("**** returning to the product page*****")
         if self.targetPage == "Products":
             assert True
             self.logger.info("**** successfully returned to the product Page")

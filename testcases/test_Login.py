@@ -14,6 +14,7 @@ class Test_Login():
     def test001_Login(self, setup):
         self.logger.info("******* Starting test_001_login **********")
         self.driver = setup
+        self.driver.implicitly_wait(5)
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 

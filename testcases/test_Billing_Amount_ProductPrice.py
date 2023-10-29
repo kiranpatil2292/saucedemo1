@@ -1,5 +1,8 @@
 import os
 import time
+
+import pytest
+
 from pageObjects.CartPage import CartPage
 from pageObjects.CheckoutPage import CheckOutPage
 from pageObjects.LoginPage import LoginPage
@@ -13,10 +16,11 @@ class Test_BillingAmountOfOrderedProduct():
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()
 
+    @pytest.mark.Regression
     def test_Billing_priceOfOrdered_product(self, setup):
         self.logger.info("**** started test_Billing_priceOfOrdered_product ****")
         self.driver = setup
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(0)
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
         self.logger.info("***** browser is initializing *****")
@@ -27,7 +31,7 @@ class Test_BillingAmountOfOrderedProduct():
         self.logger.info("***** successfully logged into product page *****")
         self.cp = CartPage(self.driver)
         self.cp.seleDropOpt()
-        time.sleep(4)
+
         self.logger.info("**** sorting the product ****")
         self.cp.clickSacLabPd()
 
@@ -54,8 +58,8 @@ class Test_BillingAmountOfOrderedProduct():
         self.logger.info("**** adding input to the checkoutPage ")
         self.co.scroll_action_price_ele()
         self.targetPage = self.co.ConfmsgTotalPrice()
-        time.sleep(10)
-        if self.targetPage == "Total: $36.69" :
+        time.sleep(4)
+        if self.targetPage == "Total: $36.69":
             assert True
             self.logger.info("**** successfully billing amount is verified ****")
             self.driver.close()

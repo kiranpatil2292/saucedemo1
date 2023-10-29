@@ -1,11 +1,13 @@
 import os
-
+from utilities.readProperties import ReadConfig
 from pageObjects.LoginPage import LoginPage
 from utilities.customLogger import LogGen
 
 
 class Test_Logout():
-    baseURL = " https://www.saucedemo.com/"
+    baseURL = ReadConfig.getApplicationURL()
+    username= ReadConfig.getUserName()
+    password= ReadConfig.getPassword()
     logger = LogGen.loggen()
 
     def test_Logout(self, setup):
@@ -16,8 +18,8 @@ class Test_Logout():
         self.driver.maximize_window()
 
         self.lp = LoginPage(self.driver)
-        self.lp.setUsername("standard_user")
-        self.lp.setPassword("secret_sauce")
+        self.lp.setUsername(self.username)
+        self.lp.setPassword(self.password)
         self.lp.clickLogin()
         self.lp.clickBurgerMenuBt()
         self.lp.clickLogout()
