@@ -5,7 +5,7 @@ from utilities.customLogger import LogGen
 from utilities.readProperties import ReadConfig
 
 
-class Test_Login():
+class Test_Login:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUserName()
     password = ReadConfig.getPassword()
@@ -21,7 +21,7 @@ class Test_Login():
         self.lp = LoginPage(self.driver)
         self.lp.setUsername(self.username)
         self.lp.setPassword(self.password)
-        self.driver.refresh()
+
         self.lp.clickLogin()
 
         self.targetPage = self.lp.productPageExists()

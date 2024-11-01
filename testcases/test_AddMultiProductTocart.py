@@ -1,12 +1,15 @@
 import os
+import time
 
 from pageObjects.CartPage import CartPage
 from pageObjects.LoginPage import LoginPage
 from utilities.customLogger import LogGen
-
+from utilities.readProperties import ReadConfig
 
 class Test_Cart():
-    baseURL = " https://www.saucedemo.com/"
+    baseURL = ReadConfig.getApplicationURL()
+    userName= ReadConfig.getUserName()
+    password= ReadConfig.getPassword()
     logger = LogGen.loggen()
 
     def test001_AddMultiProductToCart(self, setup):
@@ -16,12 +19,14 @@ class Test_Cart():
         self.driver.maximize_window()
 
         self.lp = LoginPage(self.driver)
-        self.lp.setUsername("standard_user")
-        self.lp.setPassword("secret_sauce")
+        self.lp.setUsername(self.userName)
+        self.lp.setPassword(self.password)
         self.lp.clickLogin()
         self.cp = CartPage(self.driver)
         self.cp.clickBikeLightPd()
+        time.sleep(2)
         self.cp.clickCartAddBackLight()
+        time.sleep(1)
         self.cp.clickButBack()
         self.cp.clickBoltTshirtPd()
         self.cp.clickCartAddBoltTshirt()

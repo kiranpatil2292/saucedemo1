@@ -6,7 +6,7 @@ from utilities.customLogger import LogGen
 from utilities.readProperties import ReadConfig
 
 
-class Test_Cart():
+class Test_Cart:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUserName()
     password = ReadConfig.getPassword()

@@ -1,13 +1,16 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-class CartPage():
+
+class CartPage:
     pd_bikelight_xpath = "//div[normalize-space()='Sauce Labs Bike Light']"
     cartadd_bikelight_xpath = "//button[@id='add-to-cart-sauce-labs-bike-light']"
     btn_back_xpath = "//button[@id='back-to-products']"
     pd_boltTshirt_xpath = "//div[normalize-space()='Sauce Labs Bolt T-Shirt']"
-    cartadd_boltTshirt_id = 'add-to-cart-sauce-labs-bolt-t-shirt'
+    cartadd_boltTshirt_id = "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"
     cartmsg_addvalue_xpath = "//span[@class='shopping_cart_badge']"
     cart_link_xpath = "//a[@class='shopping_cart_link']"
     cart_removepd_xpath = "//button[@id='remove-sauce-labs-bike-light']"
@@ -25,7 +28,11 @@ class CartPage():
         self.driver.find_element(By.XPATH, self.pd_bikelight_xpath).click()
 
     def clickCartAddBackLight(self):
-        self.driver.find_element(By.XPATH, self.cartadd_bikelight_xpath).click()
+        mywait= WebDriverWait(self.driver,10)
+
+        mywait.until(EC.presence_of_element_located((By.XPATH, self.cartadd_bikelight_xpath))).click()
+
+        # self.driver.find_element(By.XPATH, self.cartadd_bikelight_xpath).click()
 
     def clickButBack(self):
         self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
@@ -34,7 +41,7 @@ class CartPage():
         self.driver.find_element(By.XPATH, self.pd_boltTshirt_xpath).click()
 
     def clickCartAddBoltTshirt(self):
-        self.driver.find_element(By.ID, self.cartadd_boltTshirt_id).click()
+        self.driver.find_element(By.XPATH, self.cartadd_boltTshirt_id).click()
 
     def clickCartLink(self):
         self.driver.find_element(By.XPATH, self.cart_link_xpath).click()
